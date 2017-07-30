@@ -56,7 +56,7 @@ public class PermissionsManager {
     }
 
     public User getUser(long userId) {
-        return (User) usersManager.getById(userId);
+        return usersManager.getById(userId);
     }
 
     public Set<Long> getGroupPermissions(long userId) {
@@ -376,7 +376,7 @@ public class PermissionsManager {
     public User login(String email, String password) throws SQLException {
         User user = dataManager.login(email, password);
         if (user != null) {
-            checkUserEnabled(user.getId());
+            //   checkUserEnabled(user.getId());
             return getUser(user.getId());
         }
         return null;
