@@ -6,12 +6,21 @@ import org.traccar.ProtocolTest;
 public class OigoProtocolDecoderTest extends ProtocolTest {
 
     @Test
-    public void testDecode() throws Exception {
+    public void testOigo() throws Exception {
+        OigoMSXXProtocolDecoder decoder = new OigoMSXXProtocolDecoder(new OigoMSXXProtocol());
 
+        verifyPosition(decoder, binary(
+                "303138333533373832303636323232333631303730343032303330343933303632313030303030303030303030303030303030303030303030303030303030303030303037423443303031313030313338303030303030303030"));
+    }
+
+    @Test
+    public void testDecode() throws Exception {
         OigoProtocolDecoder decoder = new OigoProtocolDecoder(new OigoProtocol());
+        //303138333533373832303636323232333631303730343032303330343933303632313030303030303030303030303030303030303030303030303030303030303030303037423443303031313030313338303030303030303030
 
         verifyPosition(decoder, binary(
                 "0103537820628365110310410790660962521813380026EE4EFF8593AA0065003E00794C020600100500000000"));
+
 
         verifyPosition(decoder, binary(
                 "0E03537820628344660204043255862749531B100E0026EE3AFF8593A3FFFE00BF00044C20090710C300000000"));
